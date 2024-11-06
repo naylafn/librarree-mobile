@@ -64,13 +64,21 @@ class _MyWidgetState extends State<MyWidget> {
 ### Widget yang Digunakan
 
   ```MaterialApp```: Pembungkus utama aplikasi flutter untuk tema dan pengaturan seluruh aplikasi.
+  
   ```Scaffold```: Struktur dasar halaman (AppBar, Body, dll) untuk membuat tampilan yang konsisten.
+  
   ```AppBar```: Membuat potongan aplikasi di bagian atas halaman yang dapat menampilkan judul, icon, dan aksi lainnya.
+  
   ```Padding```: Menambah jarak di sekitar widget.
+  
   ```Column```: Menyusun widget secara vertikal.
+  
   ```Row```: Menyusun widget secara horizontal.
+  
   ```InfoCard```: Widget custom untuk menampilkan kartu berisi informasi _title_ dan _content_. 
+  
   ```Card```: Membuat kartu.
+  
   ```ItemCard```: Widget custom untuk menampilkan tombol dalam bentuk kartu berisi icon dan text.
 
 ### setState()
