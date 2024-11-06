@@ -81,6 +81,10 @@ class _MyWidgetState extends State<MyWidget> {
   
   ```ItemCard```: Widget custom untuk menampilkan tombol dalam bentuk kartu berisi icon dan text.
 
+  ```InkWell```: Mendeteksi event pada ```ItemCard``` dan menampilkan pesan pada ```SnackBar```.
+  
+  ```SnackBar```: Menampilkan pesan sementara.
+
 ### setState()
 
 Fungsi ```setState()``` mengindikasikan bahwa ada perubahan pada data atau tampilan yang perlu diperbarui sehingga memicu flutter untuk rebuild dengan memanggil kembali method ```build()```.
