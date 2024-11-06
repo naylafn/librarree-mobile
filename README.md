@@ -8,6 +8,7 @@
 State adalah informasi yang dapat dibaca secara sinkronus saat widget sedang di build dan dapat berubah-ubah selama aplikasi berjalan. State sangat penting karena mempengaruhi tampilan dan interaksi widget di aplikasi.
 
 **Stateless widget**
+
 widget dengan state yang tidak bisa berubah setelah dibuat, kecuali aplikasi dijalankan ulang. Stateless widget meng-override method build() dan me-return sebuah widget. Contohnya widget statis seperti icon dan text.
 
 ```dart
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
 ```
 
 **Stateful Widget**
+
 Widget dengan state yang dapat berubah-ubah. Jika terdapat perubahan pada state, widget akan di re-build untuk menampilkan pembaruannya. Contohnya tombol yang meng-increment angka counter atau mengubah warna saat ditekan. Stateful widget memiliki kelas yang berpasangan dengan kelas State-nya sendiri.
 
 ```dart
