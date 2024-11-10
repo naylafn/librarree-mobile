@@ -111,3 +111,99 @@ Variabel yang terpengaruh oleh fungsi ```setState()``` adalah variabel yang term
 - Membuat stateless widget ```ItemCard``` untuk menampilkan kartu yang berisi objek ```ItemHomePage```.
 
 </details>
+
+<details>
+  <summary>Tugas 8: Flutter Navigation, Layouts, Forms, and Input Elements</summary>
+
+### const di Flutter
+
+**Kegunaan dan Keuntungan:**
+
+Widget yang didefinisikan dengan ```const``` hanya dibuat sekali dalam memori sehingga dapat menghemat penggunaan memori. Oleh karena itu juga widget tidak dapat diubah setelah didefinisikan dengan ```const```. Penggunaan ```const``` juga meningkatkan performa karena widget tidak perlu dibuat ulang setiap kali aplikasi di-render.
+
+**Kapan Digunakan:**
+
+```const``` sebaiknya digunakan untuk membuat widget yang statis atau tidak bergantung pada data yang berubah-ubah, dan untuk mendefinisikan variabel yang sudah diketahui pada saat compile time.
+
+Sebaliknya, jangan gunakan ```const``` untuk widget yang bergantung pada data dinamis (misalnya data dari input user).
+
+### Row vs Column
+
+**Row**
+
+Digunakan untuk menempatkan elemen-elemen secara horizontal.
+
+```dart
+Row(
+  {Key key,
+  MainAxisAlignment mainAxisAlignment: MainAxisAlignment.start,
+  MainAxisSize mainAxisSize: MainAxisSize.max,
+  CrossAxisAlignment crossAxisAlignment: CrossAxisAlignment.center,
+  TextDirection textDirection,
+  VerticalDirection verticalDirection: VerticalDirection.down,
+  TextBaseline textBaseline: TextBaseline.alphabetic,
+  List<Widget> children: const <Widget>[]}
+)
+```
+
+Contoh:
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: <Widget>[
+    Icon(Icons.book),
+    Text('Hello World'),
+    ElevatedButton(
+      onPressed: () {},
+      child: Text('Click Me'),
+    ),
+  ],
+)
+```
+
+**Column**
+
+Digunakan untuk menempatkan elemen-elemen secara vertikal.
+
+```dart
+Column(
+  {Key key,
+  MainAxisAlignment mainAxisAlignment: MainAxisAlignment.start,
+  MainAxisSize mainAxisSize: MainAxisSize.max,
+  CrossAxisAlignment crossAxisAlignment: CrossAxisAlignment.center,
+  TextDirection textDirection,
+  VerticalDirection verticalDirection: VerticalDirection.down,
+  TextBaseline textBaseline,
+  List<Widget> children: const <Widget>[]}
+)
+```
+
+contoh:
+
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: <Widget>[
+    Text('Item 1'),
+    Text('Item 2'),
+    ElevatedButton(
+      onPressed: () {},
+      child: Text('Button'),
+    ),
+  ],
+)
+
+```
+
+| Properties | Row | Column |
+| ------------- | ------------- | ------------- |
+| MainAxisAlignment | Horizontal | Vertikal |
+| CrossAxisAlginment | Vertikal | Horizontal |
+
+### Elemen Input yang Digunakan
+
+
+</details>
