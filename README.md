@@ -205,5 +205,67 @@ Column(
 
 ### Elemen Input yang Digunakan
 
+**Input: title, author** => TextFormField()
+
+```dart
+TextFormField(
+  decoration: InputDecoration(
+    labelText: "Input name",
+    border: OutlineInputBorder(),
+  ),
+  onChanged: (value) {
+    // Handle change
+  },
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Book title can\'t be empty!';
+    }
+    return null;
+  },
+),
+```
+
+**Input: price** => TextFormField()
+
+```keyboardType``` disesuaikan menjadi ```TextInputType.number``` agar input hanya berupa angka.
+
+```dart
+TextFormField(
+  keyboardType: TextInputType.number,
+  decoration: InputDecoration(
+    labelText: "Price",
+    border: OutlineInputBorder(),
+  ),
+  onChanged: (value) {
+    // Handle change
+  },
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Price can\'t be empty!';
+    }
+    if (int.tryParse(value) == null) {
+      return 'Price must be a number!';
+    }
+    return null;
+  },
+),
+```
+
+**Elemen input lain:**
+
+```TextField()```: Menerima input teks.
+
+```Checkbox()```: Membuat opsi pilihan untuk user.
+
+```Switch()```: Membuat opsi untuk user dalam bentuk switch.
+
+```Radio()```: Memungkinkan user memilih lebih dari satu opsi.
+
+```Slider()```: Memungkinkan user memilih nilai dalam rentang tertentu dengan menyeret thumb.
+
+```DropdownButton()```: Menampilkan daftar pilihan yang dapat dipilih.
+
+```Datepicker()```: Digunakan untuk memilih tanggal.
+
 
 </details>
