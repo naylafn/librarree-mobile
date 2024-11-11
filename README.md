@@ -267,5 +267,50 @@ TextFormField(
 
 ```Datepicker()```: Digunakan untuk memilih tanggal.
 
+### Tema (theme) Flutter
+
+Mengimplementasikan tema di flutter menggunakan properti ```theme``` pada widget ```MaterialApp``` di file ```main.dart```.
+
+**Tema yang digunakan:**
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.blue,
+        ).copyWith(
+          secondary: const Color(0xFF00B4D8),
+        ),
+      ),
+      home: MyHomePage(),
+    );
+  }
+```
+
+```ColorScheme```: Mengatur skema warna dengan properti ```primary``` dan ```secondary```.
+
+### Cara Menangani Navigasi dalam Aplikasi
+
+Menangani navigasi dengan ```Navigator.pushReplacement``` untuk menggantikan halaman yang sedang ditampilkan dengan halaman yang baru. Metode ini akan menghapus halaman yang sedang ditampilkan dari navigation stack dan menggantinya dengan halaman baru. 
+
+```dart
+ListTile(
+  leading: const Icon(Icons.book),
+  title: const Text('Add a New Book'),
+  onTap: () {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BookFormPage(),
+      )
+    );
+  }
+),
+```
+
+Fungsi: Mengganti halaman saat ini dengan halaman baru dan menghapus halaman yang sedang aktif dari tumpukan.
 
 </details>
