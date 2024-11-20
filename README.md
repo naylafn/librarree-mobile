@@ -314,3 +314,93 @@ ListTile(
 Fungsi: Mengganti halaman saat ini dengan halaman baru dan menghapus halaman yang sedang aktif dari tumpukan.
 
 </details>
+
+<details>
+  <summary>Tugas 9: Integrasi Layanan Web Django dengan Aplikasi Flutter</summary>
+
+  ### Model untuk data delivery 
+
+  Menggunakan ```model``` tidak diwajibkan dan tidak akan terjadi error jika kita tidak membuat ```model``` dahulu. Namun, penggunaan model memiliki banyak keuntungan.
+
+  - **Menjaga konsistensi data**: Model menjaga struktur data supaya sesuai dengan harapan, seperti atribut dan tipe data yang benar.
+
+  - **Validasi data**:  Model dapat digunakan untuk memvalidasi data sebelum diproses lebih lanjut.
+
+  - **Pemrosesan data lebih mudah**: Model meningkatkan produktivitas dan mengurangi kesalahan dalam penanganan data.
+
+  - **Dokumentasi yang lebih baik**: Model mempermudah pemeliharaan kode dan kolaborasi.
+
+  Meskipun tidak akan terjadi error jika tidak menggunakan ```model```, kemungkinan terjadinya error akan lebih besar.
+
+  ### Library ```http```
+
+  Library ```http``` digunakan untuk melakukan HTTP request ke server serta mengelola response yang diterima dari server. Fungsi utama dari library ini meliputi pengiriman data ke server, pengambilan data dari server, dan menangani komunikasi HTTP secara umum.
+
+  Contoh: melakukan HTTP request untuk mengambil data untuk login.
+  ```dart
+final response = await request
+  .login("http://127.0.0.1:8000/auth/login/", {
+    'username': username,
+    'password': password,
+});
+  ```
+
+### Mekanisme data delivery
+
+1. User memasukkan input melalui form flutter, data tersebut kemudian disimpan sementara di variabel atau model data Dart.
+2. Flutter mengirimkan data ke server melalui HTTP request menggunakan library ```http```.
+3. Server menerima permintaan dan data JSON, kemudian django memproses data menggunakan views dan serializer untuk validasi dan penyimpanan ke database. Jika data valid, server menyimpan data dan mengembalikan respons JSON.
+4. Flutter menerima respons JSON dari server, lalu memproses data tersebut dengan mem-parse JSON ke objek Dart menggunakan model data.
+5. Flutter memperbarui tampilan UI (misalnya, menggunakan setState, Provider, atau Riverpod) agar data terbaru ditampilkan kepada pengguna.
+
+### Mekanisme autentikasi
+
+**Register**
+
+1. User memasukkan data registrasi (username dan password) melalui form di aplikasi Flutter.
+2. Flutter mengirim permintaan HTTP POST ke endpoint API registrasi di Django, data yang dikirim berupa JSON yang berisi informasi pengguna.
+```dart
+final response = await request.postJson(
+  "http://127.0.0:8000/auth/register/",
+  jsonEncode({
+    "username": username,
+    "password1": password1,
+    "password2": password2,
+}));
+```
+3. Django menerima data melalui endpoint yang telah diatur di ```authentication/views.py```. Jika valid, Django membuat akun pengguna baru dan menyimpan data ke database.
+
+**Login**
+
+1. User memasukkan data login (username dan password) melalui form di aplikasi flutter.
+2. Flutter mengirim permintaan HTTP POST ke endpoint API login di Django. Jika menggunakan token, Django akan mengembalikan token autentikasi.
+```dart
+final response = await request
+  .login("http://127.0.0.1:8000/auth/login/", {
+    'username': username,
+    'password': password,
+});
+```
+3. Django memvalidasi kredensial pengguna. Jika valid, Django mengembalikan token autentikasi.
+4. Flutter menyimpan token autentikasi yang diterima. Token ini digunakan untuk permintaan API selanjutnya agar pengguna tetap terautentikasi.
+5. Setelah login berhasil, Flutter mengarahkan pengguna ke halaman utama.
+
+**Logout**
+
+1. User menekan tombol logout.
+2. Flutter mengirimkan permintaan logout ke endpoint API.
+```dart
+final response = await request.logout("http://127.0.0:8000/auth/logout/");
+```
+3. Jika diperlukan, server dapat menghapus atau menandai token sebagai tidak valid.
+4. Hapus token autentikasi dari penyimpanan lokal.
+
+### Implementasi tugas
+
+- Membuat model Dart dari model JSON di Django melalui website quicktype.
+- Menghubungkan Flutter dengan Django dengan mengimplementasikan kode di Flutter untuk mengirim permintaan HTTP ke endpoint Django (GET, POST, dll.).
+- Parse respons JSON yang diterima ke objek Dart, kemudian menampilkan data di UI Flutter.
+- Mengimplementasikan fungsi register, login dan logout dengan pengiriman data ke endpoint autentikasi Django.
+- Mengambil objek model ```Book``` dari database untuk ditampilkan di aplikasi flutter.
+
+</details>
